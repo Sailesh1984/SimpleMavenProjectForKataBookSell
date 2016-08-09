@@ -99,7 +99,6 @@ public class BookSellingController {
 		BookForm bookForm = new BookForm();
 		bookForm.setBooks(bookList);
 		BillingForm billingForm = service.getBillingInfo(bookForm);
-		System.out.println("billingForm List :"+ billingForm.getBooks().size());
 		System.out.format("%10s%20s%10s%10s", "SERIAL ID", "BOOK NAME", "PRICE", "QANTITY" );
 		System.out.println();
 		for(Book book: billingForm.getBooks()){

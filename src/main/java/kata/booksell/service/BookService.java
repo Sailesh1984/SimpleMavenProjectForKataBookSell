@@ -116,7 +116,6 @@ public class BookService {
 			totalDiscountPrice = totalDiscountPrice+ (8*differentBookTypeQty*discuontPercentage/100)*getCountOfdifferentBooksSet;
 			books = deductMinQuantityFromEachElementOfMap(books, getCountOfdifferentBooksSet);
 		}	
-		System.out.println("totalDiscountPrice" + totalDiscountPrice);
 		return totalDiscountPrice;
 	}
 

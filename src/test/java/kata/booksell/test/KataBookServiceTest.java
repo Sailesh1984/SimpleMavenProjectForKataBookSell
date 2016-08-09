@@ -23,7 +23,7 @@ public class KataBookServiceTest {
 	
 	@AfterClass
 	public static void teardown(){
-		
+		   
 	}
 	public Map<Integer, Book> getHashMapFordeductMinQuantityFromEachElementOfMapTest(){
 		Map<Integer, Book> map = new HashMap<Integer, Book>();
@@ -222,5 +222,99 @@ public class KataBookServiceTest {
 	public void getBillingInfoTest(){
 		BillingForm form = service.getBillingInfo(getBooksForcalculateGrossTotalPriceTest());
 		assertEquals(form.getNetTotalPrice(), 36.8,1);
+	}
+	
+	private BookForm getBooksForcalculateNetTotalPriceTest(){
+		List<Book> bookList = new ArrayList<Book>();
+		Book book1 = new Book();
+		book1.setSerialId(1111);
+		book1.setPrice(8);
+		book1.setName("The First Harry Advanture");
+		book1.setQuantity(2);
+		bookList.add(book1);
+
+		Book book2 = new Book();
+		book2.setSerialId(1112);
+		book2.setPrice(8);
+		book2.setName("The Second Harry Advanture");
+		book2.setQuantity(2);
+		bookList.add(book2);
+
+		Book book3 = new Book();
+		book3.setSerialId(1113);
+		book3.setPrice(8);
+		book3.setName("The Third Harry Advanture");
+		book3.setQuantity(2);
+		bookList.add(book3);
+
+		Book book4 = new Book();
+		book4.setSerialId(1114);
+		book4.setPrice(8);
+		book4.setName("The Fourth Harry Advanture");
+		book4.setQuantity(2);
+		bookList.add(book4);
+
+		Book book5 = new Book();
+		book5.setSerialId(1115);
+		book5.setPrice(8);
+		book5.setName("The Fiveth Harry Advanture");
+		book5.setQuantity(0);
+		bookList.add(book5);
+		
+		BookForm form = new BookForm();
+		form.setBooks(bookList);
+		return form;
+	}
+	@Test
+	public void getBillingInfoTestForTwoSetOfFOurDifferentBook(){
+		BillingForm form = service.getBillingInfo(getBooksForcalculateNetTotalPriceTest());
+		assertEquals(form.getNetTotalPrice(), 51.2,2);
+	}
+	
+	private BookForm getBooksForcalculateNetTotalPriceTestForoneSetOfFiveBookAndOneSetofThreeBook(){
+		List<Book> bookList = new ArrayList<Book>();
+		Book book1 = new Book();
+		book1.setSerialId(1111);
+		book1.setPrice(8);
+		book1.setName("The First Harry Advanture");
+		book1.setQuantity(2);
+		bookList.add(book1);
+
+		Book book2 = new Book();
+		book2.setSerialId(1112);
+		book2.setPrice(8);
+		book2.setName("The Second Harry Advanture");
+		book2.setQuantity(2);
+		bookList.add(book2);
+
+		Book book3 = new Book();
+		book3.setSerialId(1113);
+		book3.setPrice(8);
+		book3.setName("The Third Harry Advanture");
+		book3.setQuantity(2);
+		bookList.add(book3);
+
+		Book book4 = new Book();
+		book4.setSerialId(1114);
+		book4.setPrice(8);
+		book4.setName("The Fourth Harry Advanture");
+		book4.setQuantity(1);
+		bookList.add(book4);
+
+		Book book5 = new Book();
+		book5.setSerialId(1115);
+		book5.setPrice(8);
+		book5.setName("The Fiveth Harry Advanture");
+		book5.setQuantity(1);
+		bookList.add(book5);
+		
+		BookForm form = new BookForm();
+		form.setBooks(bookList);
+		return form;
+	}
+	@Test
+	public void getBillingInfoTestForOneSetOf5DifferentBookAndOneSetOfThreeDifferentBook(){
+		BillingForm form = service.getBillingInfo(getBooksForcalculateNetTotalPriceTestForoneSetOfFiveBookAndOneSetofThreeBook());
+		assertEquals(form.getNetTotalPrice(), 51.6,2);
 	}
 }
